@@ -15,6 +15,10 @@ export default class DragItem extends cc.Component {
         this.setIcon(this.icon.spriteFrame);
     }
 
+    getIcon(){
+        return this.icon.spriteFrame;
+    }
+
     setIcon(spriteFrame: cc.SpriteFrame) {
         DragDropMgr.getInstance().unregisterDragTarget(this.node);
         this.icon.spriteFrame = spriteFrame;

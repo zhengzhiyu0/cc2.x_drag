@@ -91,8 +91,13 @@ export default class Scene extends cc.Component implements IDragDropListener {
     }) {
         console.log("onDropAgent", { container, dragAgent, sourceData })
         if (container) {
-            sourceData.dragItem.setIcon(null);
+            //这里需要根据目标是否和拖拽一致，一致则合成，不一致则回退
             let containerItem = container.getComponent(ContainerItem);
+            if (!containerItem.drag.getIcon()) {
+                sourceData.dragItem.setIcon(sourceData.spriteFrame);
+                return;
+            }
+            sourceData.dragItem.setIcon(null);
             containerItem.drag.setIcon(sourceData.spriteFrame);
         } else {
             sourceData.dragItem.setIcon(sourceData.spriteFrame);
