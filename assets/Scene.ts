@@ -45,9 +45,9 @@ export default class Scene extends cc.Component implements IDragDropListener {
     }) {
         console.log("onDropAgent", { container, dragAgent, sourceData })
         if (container) {
+            sourceData.dragItem.setIcon(null);
             let containerItem = container.getComponent(ContainerItem);
             containerItem.drag.setIcon(sourceData.spriteFrame);
-            sourceData.dragItem.setIcon(null);
         } else {
             sourceData.dragItem.setIcon(sourceData.spriteFrame);
         }
